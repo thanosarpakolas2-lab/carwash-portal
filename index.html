@@ -293,7 +293,7 @@
             margin-bottom: 2vh;
         }
 
-        /* Base Neon Button Style */
+        /* Base Neon Button Style — glows always on for mobile */
         .neon-btn {
             display: flex;
             align-items: center;
@@ -302,15 +302,18 @@
             min-height: 60px; /* Minimum tap target */
             border-radius: 16px;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-color); /* Always glowing border */
             font-weight: 600;
             font-size: 16px;
             letter-spacing: 1px;
             color: #ffffff;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 12px var(--glow-color),   /* Always-on outer neon glow */
+                inset 0 0 4px rgba(255, 255, 255, 0.05);
         }
 
         /* Glass highlight shimmer */
@@ -349,17 +352,12 @@
             --glow-color: var(--directions-glow);
         }
 
-        .neon-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            border-color: var(--neon-color);
-            box-shadow: 
-                0 0 10px rgba(0, 0, 0, 0.5),
-                0 0 15px var(--glow-color),
-                inset 0 0 5px rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        /* Hover/active: press feedback (scale) only — glows already permanent */
+        .neon-btn:hover, .neon-btn:active {
+            transform: translateY(-2px) scale(1.02);
         }
 
-        /* Icon Container styling */
+        /* Icon Container — always glowing */
         .btn-icon {
             display: flex;
             align-items: center;
@@ -368,17 +366,10 @@
             width: 28px;
             height: 28px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--neon-color);  /* Always colored border */
+            box-shadow: 0 0 7px var(--glow-color); /* Always glowing */
             color: var(--neon-color);
-        }
-
-        .neon-btn:hover .btn-icon {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--neon-color);
-            box-shadow: 0 0 8px var(--glow-color);
-            transform: rotate(-5deg) scale(1.1);
         }
 
         .btn-text-wrapper {
@@ -395,28 +386,17 @@
 
         .btn-subtitle {
             font-size: 10px;
-            color: #8b9bb4;
+            color: rgba(255,255,255,0.7); /* Always visible, not faded */
             letter-spacing: 0.5px;
             margin-top: 2px;
             font-weight: 400;
         }
 
-        .neon-btn:hover .btn-subtitle {
-            color: #ffffff;
-            opacity: 0.8;
-        }
-
-        /* Arrow indicator on right */
+        /* Arrow — always fully visible */
         .btn-arrow {
             margin-left: auto;
-            opacity: 0.3;
-            transition: all 0.3s ease;
+            opacity: 0.85;
             color: var(--neon-color);
-        }
-
-        .neon-btn:hover .btn-arrow {
-            opacity: 1;
-            transform: translateX(4px);
         }
 
         /* Pulsing Quick Call FAB (Phone Button) - Centered */
