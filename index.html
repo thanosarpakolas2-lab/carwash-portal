@@ -85,12 +85,13 @@
             position: absolute;
             bottom: -50px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.3) 0%, rgba(185, 0, 255, 0.08) 60%, rgba(255, 255, 255, 0.4) 100%);
+            background: radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.55) 0%, rgba(185, 0, 255, 0.2) 60%, rgba(255, 255, 255, 0.7) 100%);
             box-shadow: 
-                0 0 12px rgba(0, 240, 255, 0.2), 
-                inset 0 0 8px rgba(255, 255, 255, 0.5);
+                0 0 18px rgba(0, 240, 255, 0.5), 
+                0 0 8px rgba(185, 0, 255, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.7);
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.85;
             animation: driftUp var(--speed) linear infinite, sway var(--sway-speed) ease-in-out infinite alternate;
         }
 
@@ -220,8 +221,8 @@
         /* Tiny red flash effect on the car's rear tail light (left side of car) */
         .taillight-flash {
             position: absolute;
-            top: 48%;
-            left: 18%;
+            top: 53%;
+            left: 22%;
             width: 5px;
             height: 5px;
             background-color: #ffffff;
@@ -616,9 +617,9 @@
             bubble.classList.add('bubble');
             
             // Random styling parameters
-            const size = Math.random() * 45 + 10; // 10px to 55px
+            const size = Math.random() * 50 + 15; // 15px to 65px — bigger bubbles
             const left = Math.random() * 100; // 0% to 100%
-            const maxOpacity = Math.random() * 0.4 + 0.2; // 0.2 to 0.6
+            const maxOpacity = Math.random() * 0.35 + 0.5; // 0.5 to 0.85 — much more visible
             const speed = Math.random() * 10 + 8; // 8s to 18s
             const swaySpeed = Math.random() * 4 + 3; // 3s to 7s
             const swayAmount = (Math.random() * 50 + 20) * (Math.random() > 0.5 ? 1 : -1); // 20px to 70px sway
